@@ -23,7 +23,7 @@ Hand-Gesture-Classification/
 
 ## 🧠 Project Highlights
 
-- **Dataset**: HaGRID Dataset with 21 hand landmarks per gesture image
+- **Dataset**: HaGRID Dataset with 21 hand landmarks per gesture image (https://www.kaggle.com/datasets/kapitanov/hagrid)
 - **Preprocessing**: Re-centering to wrist and normalization with middle finger tip
 - **Models Tested**: Logistic Regression, Decision Tree, Random Forest, SVC, KNN, XGBoost
 - **Evaluation Metrics**: Accuracy, Precision, Recall, F1-score
@@ -85,11 +85,5 @@ Hand-Gesture-Classification/
 
 ## 📹 Demo (Optional)
 
-You can record or upload a video demonstrating your model's prediction using a webcam. Add the video link here if available.
-
-## ✍️ Authors
-
-- Omnia Saeed Abd El Nabi
-- [Your Collaborators, if any]
-```
+https://drive.google.com/file/d/1q6TI4d9Br_06sElh-FZQEbUmZkOWUFOo/view?usp=drive_link
 
