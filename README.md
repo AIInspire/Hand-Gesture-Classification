@@ -1,7 +1,3 @@
-from pathlib import Path
-
-# Recreate README content after kernel reset
-readme_content = """
 # 🤖 Hand Gesture Classification Using MediaPipe & HaGRID Dataset
 
 This project focuses on classifying 18 different hand gestures using landmark coordinates extracted via **MediaPipe** from the **HaGRID dataset**. A trained machine learning model then classifies the gestures in **real-time using a webcam**.
