@@ -36,7 +36,7 @@ Using a variety of machine learning models trained on x, y, z coordinates of han
 
 ## 🧾 Dataset Details
 
-- **Source:** [HaGRID Dataset]
+- **Source:** [HaGRID Dataset: https://www.kaggle.com/datasets/kapitanov/hagrid]
 - **Gestures:** 18 types such as `like`, `dislike`, `no`, `stop`, `peace`, `call`, etc.
 - **Format:** CSV file with:
   - 21 landmarks per hand × (x, y, z) = 63 features
