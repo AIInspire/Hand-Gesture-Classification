@@ -83,7 +83,7 @@ Hand-Gesture-Classification/
 - **Model Tuning**: GridSearchCV for hyperparameter optimization
 - **Stabilization**: Optional window mode smoothing of predictions
 
-## 📹 Demo (Optional)
+## 📹 Demo
 
 https://drive.google.com/file/d/1q6TI4d9Br_06sElh-FZQEbUmZkOWUFOo/view?usp=drive_link
 
