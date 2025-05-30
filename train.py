@@ -12,6 +12,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 
+from datetime import datetime
+
 
 # ============================
 # 1. Load Dataset
@@ -43,41 +45,22 @@ def preprocess(y_train, y_test):
     y_test_encoded = le.transform(y_test)
 
     # Save label encoder
-    with open("label_encoder.pkl", "wb") as f:
+    label_encoder_path = "artifacts/label_encoder.pkl"
+    os.makedirs("artifacts", exist_ok=True)
+    with open(label_encoder_path, "wb") as f:
         pickle.dump(le, f)
 
-    return y_train_encoded, y_test_encoded
-
-
-def normalize_landmarks(hand_landmarks):
-    """
-    Normalize landmarks:
-    - Origin: wrist (landmark 0)
-    - Scale x by landmark 12 x
-    - Scale y by landmark 12 y
-    """
-    wrist = hand_landmarks.landmark[0]
-    mid_tip = hand_landmarks.landmark[12]
-
-    x_scale = mid_tip.x if abs(mid_tip.x) > 1e-6 else 1e-6
-    y_scale = mid_tip.y if abs(mid_tip.y) > 1e-6 else 1e-6
-
-    normalized = []
-    for lm in hand_landmarks.landmark:
-        x_norm = (lm.x - wrist.x) / x_scale
-        y_norm = (lm.y - wrist.y) / y_scale
-        z_norm = lm.z
-        normalized.extend([x_norm, y_norm, z_norm])
-
-    return normalized
+    return y_train_encoded, y_test_encoded, label_encoder_path
 
 
 # ============================
 # 3. Training and Logging
 # ============================
 
-def train_and_log_model(model, model_name, X_train, X_test, y_train, y_test):
+def train_and_log_model(model, model_name, X_train, X_test, y_train, y_test, label_encoder_path):
     with mlflow.start_run(run_name=model_name) as run:
+        run_id = run.info.run_id
+
         model.fit(X_train, y_train)
         preds = model.predict(X_test)
         acc = accuracy_score(y_test, preds)
@@ -91,22 +74,22 @@ def train_and_log_model(model, model_name, X_train, X_test, y_train, y_test):
                 for metric, value in metrics.items():
                     mlflow.log_metric(f"{cls}_{metric}", value)
 
-        # Infer signature from training data and model prediction
-        signature = infer_signature(X_train, model.predict(X_train[:5]))
-        input_example = X_train.head(5)
-
-        mlflow.sklearn.log_model(model, model_name,
-                                 signature=signature,
-                                 input_example=input_example)
-        
-        # Save the model as a pickle file locally
-        pkl_filename = f"{model_name}.pkl"
-        with open(pkl_filename, "wb") as f:
+        # Save model as .pkl
+        model_path = f"artifacts/{model_name}_model.pkl"
+        with open(model_path, "wb") as f:
             pickle.dump(model, f)
 
+        # Log artifacts
+        mlflow.log_artifact(model_path, artifact_path="models")
+        mlflow.log_artifact(label_encoder_path, artifact_path="preprocessing")
+
+        # Also log the model with mlflow.sklearn
+        signature = infer_signature(X_train, model.predict(X_train[:5]))
+        input_example = X_train.head(5)
+        mlflow.sklearn.log_model(model, model_name, signature=signature, input_example=input_example)
+
         print(f"[{model_name}] Accuracy: {acc:.4f}")
-        print(f"Model saved as: {pkl_filename}")
-        print(f"Run URL: {mlflow.get_tracking_uri()}/#/experiments/{mlflow.active_run().info.experiment_id}/runs/{run.info.run_id}")
+        print(f"[{model_name}] Run Link: http://127.0.0.1:5000/#/experiments/{run.info.experiment_id}/runs/{run_id}")
 
 
 # ============================
@@ -116,14 +99,13 @@ def train_and_log_model(model, model_name, X_train, X_test, y_train, y_test):
 def main():
     mlruns_path = Path(".mlruns").resolve()
     mlruns_uri = f"file:///{mlruns_path.as_posix()}"
-    
+
     mlflow.set_tracking_uri(mlruns_uri)
     mlflow.set_registry_uri(mlruns_uri)
-    
     mlflow.set_experiment("Hand Gesture Classification")
 
     X_train, X_test, y_train, y_test = load_data()
-    y_train_encoded, y_test_encoded = preprocess(y_train, y_test)
+    y_train_encoded, y_test_encoded, label_encoder_path = preprocess(y_train, y_test)
 
     models = {
         "LogisticRegression": LogisticRegression(max_iter=1000),
@@ -132,7 +114,7 @@ def main():
     }
 
     for name, model in models.items():
-        train_and_log_model(model, name, X_train, X_test, y_train_encoded, y_test_encoded)
+        train_and_log_model(model, name, X_train, X_test, y_train_encoded, y_test_encoded, label_encoder_path)
 
 
 if __name__ == "__main__":

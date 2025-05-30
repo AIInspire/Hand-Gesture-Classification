@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Hp/Documents/Python Projects/mlops/MLOps_Final_Project/Hand-Gesture-Classification/.mlruns/200527801718046151/4ba36c002a3c4bc3bf735d7315d49736/artifacts
+end_time: 1748648513805
+entry_point_name: ''
+experiment_id: '200527801718046151'
+lifecycle_stage: active
+run_id: 4ba36c002a3c4bc3bf735d7315d49736
+run_name: RandomForest
+run_uuid: 4ba36c002a3c4bc3bf735d7315d49736
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748648471924
+status: 3
+tags: []
+user_id: Hp

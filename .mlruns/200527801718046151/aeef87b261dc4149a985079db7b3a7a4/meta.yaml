@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Hp/Documents/Python Projects/mlops/MLOps_Final_Project/Hand-Gesture-Classification/.mlruns/200527801718046151/aeef87b261dc4149a985079db7b3a7a4/artifacts
+end_time: 1748649019625
+entry_point_name: ''
+experiment_id: '200527801718046151'
+lifecycle_stage: active
+run_id: aeef87b261dc4149a985079db7b3a7a4
+run_name: LogisticRegression
+run_uuid: aeef87b261dc4149a985079db7b3a7a4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748648998632
+status: 3
+tags: []
+user_id: Hp

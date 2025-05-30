@@ -1,0 +1,74 @@
+artifact_path: RandomForest
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.7
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+is_signature_from_type_hint: false
+mlflow_version: 2.22.0
+model_size_bytes: 80645947
+model_uuid: 0ea0386c3b6346679fe96e256799efd9
+prompts: null
+run_id: 4ba36c002a3c4bc3bf735d7315d49736
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "x1", "required": true}, {"type": "double",
+    "name": "y1", "required": true}, {"type": "double", "name": "z1", "required":
+    true}, {"type": "double", "name": "x2", "required": true}, {"type": "double",
+    "name": "y2", "required": true}, {"type": "double", "name": "z2", "required":
+    true}, {"type": "double", "name": "x3", "required": true}, {"type": "double",
+    "name": "y3", "required": true}, {"type": "double", "name": "z3", "required":
+    true}, {"type": "double", "name": "x4", "required": true}, {"type": "double",
+    "name": "y4", "required": true}, {"type": "double", "name": "z4", "required":
+    true}, {"type": "double", "name": "x5", "required": true}, {"type": "double",
+    "name": "y5", "required": true}, {"type": "double", "name": "z5", "required":
+    true}, {"type": "double", "name": "x6", "required": true}, {"type": "double",
+    "name": "y6", "required": true}, {"type": "double", "name": "z6", "required":
+    true}, {"type": "double", "name": "x7", "required": true}, {"type": "double",
+    "name": "y7", "required": true}, {"type": "double", "name": "z7", "required":
+    true}, {"type": "double", "name": "x8", "required": true}, {"type": "double",
+    "name": "y8", "required": true}, {"type": "double", "name": "z8", "required":
+    true}, {"type": "double", "name": "x9", "required": true}, {"type": "double",
+    "name": "y9", "required": true}, {"type": "double", "name": "z9", "required":
+    true}, {"type": "double", "name": "x10", "required": true}, {"type": "double",
+    "name": "y10", "required": true}, {"type": "double", "name": "z10", "required":
+    true}, {"type": "double", "name": "x11", "required": true}, {"type": "double",
+    "name": "y11", "required": true}, {"type": "double", "name": "z11", "required":
+    true}, {"type": "double", "name": "x12", "required": true}, {"type": "double",
+    "name": "y12", "required": true}, {"type": "double", "name": "z12", "required":
+    true}, {"type": "double", "name": "x13", "required": true}, {"type": "double",
+    "name": "y13", "required": true}, {"type": "double", "name": "z13", "required":
+    true}, {"type": "double", "name": "x14", "required": true}, {"type": "double",
+    "name": "y14", "required": true}, {"type": "double", "name": "z14", "required":
+    true}, {"type": "double", "name": "x15", "required": true}, {"type": "double",
+    "name": "y15", "required": true}, {"type": "double", "name": "z15", "required":
+    true}, {"type": "double", "name": "x16", "required": true}, {"type": "double",
+    "name": "y16", "required": true}, {"type": "double", "name": "z16", "required":
+    true}, {"type": "double", "name": "x17", "required": true}, {"type": "double",
+    "name": "y17", "required": true}, {"type": "double", "name": "z17", "required":
+    true}, {"type": "double", "name": "x18", "required": true}, {"type": "double",
+    "name": "y18", "required": true}, {"type": "double", "name": "z18", "required":
+    true}, {"type": "double", "name": "x19", "required": true}, {"type": "double",
+    "name": "y19", "required": true}, {"type": "double", "name": "z19", "required":
+    true}, {"type": "double", "name": "x20", "required": true}, {"type": "double",
+    "name": "y20", "required": true}, {"type": "double", "name": "z20", "required":
+    true}, {"type": "double", "name": "x21", "required": true}, {"type": "double",
+    "name": "y21", "required": true}, {"type": "double", "name": "z21", "required":
+    true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-05-30 23:41:42.700496'

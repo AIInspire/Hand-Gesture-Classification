@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Hp/Documents/Python Projects/mlops/MLOps_Final_Project/Hand-Gesture-Classification/.mlruns/200527801718046151/568b85c79b0d49b986516517aac062e9/artifacts
+end_time: 1748648551908
+entry_point_name: ''
+experiment_id: '200527801718046151'
+lifecycle_stage: active
+run_id: 568b85c79b0d49b986516517aac062e9
+run_name: XGBoost
+run_uuid: 568b85c79b0d49b986516517aac062e9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748648513826
+status: 3
+tags: []
+user_id: Hp
