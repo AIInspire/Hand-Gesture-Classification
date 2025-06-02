@@ -49,7 +49,7 @@ The XGBoost classifier achieved the highest accuracy of 97.27% on the test set, 
    From the project root directory:
 
    ```bash
-   mlflow ui --backend-store-uri file:///$(pwd)/.mlruns
+   mlflow ui
    ```
 
    - Open your browser at [http://localhost:5000](http://localhost:5000) to inspect experiment runs, metrics, and artifacts.
@@ -64,6 +64,3 @@ The XGBoost classifier achieved the highest accuracy of 97.27% on the test set, 
 
 Feel free to explore the runs in MLflow UI to review model details and metrics.
 
----
-
-*Created by [Your Name] | Date: 2025-05-31*
